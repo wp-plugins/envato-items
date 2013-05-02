@@ -12,13 +12,13 @@ Display your Envato portfolio inside a post or a page.
 
 Shortcode parameters:
 
-**type** ('compact' or 'loose') - show or hide name and price (use the 'loose' type on a full-width page)
-**username** ('your-username')
-**market** ('codecanyon' or 'themeforest' or 'graphicriver')
-**price** (true) - show or hide price
-**ref** ('your-referral-username')
-**currency** ('$')
-**count** (0) - set to 0 to display all
+* **type** ('compact' or 'loose') - show or hide name and price (use the 'loose' type on a full-width page)
+* **username** ('your-username')
+* **market** ('codecanyon' or 'themeforest' or 'graphicriver')
+* **price** (true) - show or hide price
+* **ref** ('your-referral-username')
+* **currency** ('$')
+* **count** (0) - set to 0 to display all
 
 `[envato type="compact" username="butterflymedia" market="codecanyon" price="false" ref="butterflymedia" currency="$" count=0]`
 
