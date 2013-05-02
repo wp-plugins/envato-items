@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Envato Items
-Version: 1.1
+Version: 1.2
 Plugin URI: http://getbutterfly.com/wordpress-plugins/wor
 Description: Display your Envato portfolio inside a post or a page.
 Author: Ciprian Popescu
@@ -28,10 +28,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * Usage: [envato type="compact"]
  */
 
+define('EI_PLUGIN_URL', WP_PLUGIN_URL . '/' . dirname(plugin_basename(__FILE__)));
+define('EI_PLUGIN_PATH', WP_PLUGIN_DIR . '/' . dirname(plugin_basename(__FILE__)));
+define('EI_VERSION', '1.2');
+
+function ei_styles() {
+	wp_enqueue_style('ei-style', EI_PLUGIN_URL . '/css/style.css');	
+}
+
+add_action('wp_print_styles', 'ei_styles');
+
 if(!function_exists('envato_items')){
 	function envato_items($atts) {
 		extract(shortcode_atts(array(
-			'type' 		=> 'loose',
+			'type' 		=> 'compact',
 			'username' 	=> 'butterflymedia',
 			'market' 	=> 'codecanyon',
 			'price' 	=> true,
@@ -48,47 +58,26 @@ if(!function_exists('envato_items')){
 		else
 			$json_length = count($json_data['new-files-from-user']);
 
-		$data = '';
-		$data .= '<style type="text/css">
-		.envato-clear { clear: both; }
-		.envato-container {
-			width: 160px;
-			height: 160px;
-			display: block;
-			vertical-align: top;
-			text-align: center;
-			padding: 4px;
-			float: left;
-		}
-		.envato-thumb-compact img {
-			display: block;
-			margin: 0 auto;
-			float: left;
-		}
-		</style>';
-
-		$data .= '<div class="envato-wrap">';
-
-		// simple view (thumbnails only)
-		if($type == 'compact') {
-			for($i=0; $i<$json_length; $i++) {
-				$data .= '<div class="envato-thumb-compact"><a href="' . $json_data['new-files-from-user'][$i]['url'] . '?ref='.$ref.'" title="'. $json_data['new-files-from-user'][$i]['url'] .'"><img src="'.$json_data['new-files-from-user'][$i]['thumbnail'].'" alt="'. $json_data['new-files-from-user'][$i]['item'] .'" /></a></div>';
+		$data = '<div class="envato-wrap">';
+			// simple view (thumbnails only)
+			if($type == 'compact') {
+				for($i=0; $i<$json_length; $i++) {
+					$data .= '<div class="envato-thumb-compact"><a href="' . $json_data['new-files-from-user'][$i]['url'] . '?ref='.$ref.'" title="'. $json_data['new-files-from-user'][$i]['url'] .'"><img src="'.$json_data['new-files-from-user'][$i]['thumbnail'].'" alt="'. $json_data['new-files-from-user'][$i]['item'] .'" /></a></div>';
+				}
 			}
-		}
 
-		// advanced view
-		if($type == 'loose') {
-			for($i=0; $i<$json_length; $i++) {
-				$data .= '<div class="envato-container">';
-					$data .= '<div class="envato-thumb"><a href="' . $json_data['new-files-from-user'][$i]['url'] . '?ref='.$ref.'" title="'. $json_data['new-files-from-user'][$i]['url'] .'"><img src="'.$json_data['new-files-from-user'][$i]['thumbnail'].'" alt="'. $json_data['new-files-from-user'][$i]['item'] .'" /></a></div>';
-					$data .= '<div class="envato-link"><a href="' . $json_data['new-files-from-user'][$i]['url'] . '?ref='.$ref.'" title="'. $json_data['new-files-from-user'][$i]['url'] .'">' . $json_data['new-files-from-user'][$i]['item'] . '</a></div>';
-					if($price === true){
-						$data .= '<div class="envato-price">'.$currency . $json_data['new-files-from-user'][$i]['cost'] . '</div>';
-					}
-				$data .= '</div>';
+			// advanced view
+			if($type == 'loose') {
+				for($i=0; $i<$json_length; $i++) {
+					$data .= '<div class="envato-container">';
+						$data .= '<div class="envato-thumb"><a href="' . $json_data['new-files-from-user'][$i]['url'] . '?ref='.$ref.'" title="'. $json_data['new-files-from-user'][$i]['url'] .'"><img src="'.$json_data['new-files-from-user'][$i]['thumbnail'].'" alt="'. $json_data['new-files-from-user'][$i]['item'] .'" /></a></div>';
+						$data .= '<div class="envato-link"><a href="' . $json_data['new-files-from-user'][$i]['url'] . '?ref='.$ref.'" title="'. $json_data['new-files-from-user'][$i]['url'] .'">' . $json_data['new-files-from-user'][$i]['item'] . '</a></div>';
+						if($price === true){
+							$data .= '<div class="envato-price">'.$currency . $json_data['new-files-from-user'][$i]['cost'] . '</div>';
+						}
+					$data .= '</div>';
+				}
 			}
-		}
-
 		$data .= '</div>';
 		$data .= '<div class="envato-clear"></div>';
 

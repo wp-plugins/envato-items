@@ -2,9 +2,9 @@
 Contributors: butterflymedia, getbutterfly
 Tags: envato, envato api, themeforest, codecanyon, graphicriver, recent, items
 License: GPLv3
-Requires at least: 3.0
-Tested up to: 3.6-beta1
-Stable tag: 1.1
+Requires at least: 3.3
+Tested up to: 3.6-beta2
+Stable tag: 1.2
 
 == Description ==
 
@@ -12,13 +12,13 @@ Display your Envato portfolio inside a post or a page.
 
 Shortcode parameters:
 
-`type` ('compact' or 'loose') - show or hide name and price
-`username` ('your-username')
-`market` ('codecanyon' or 'themeforest' or 'graphicriver')
-`price` (true) - show or hide price
-`ref` ('your-referral-username')
-`currency` ('$')
-`count` (0) - set to 0 to display all
+**type** ('compact' or 'loose') - show or hide name and price (use the 'loose' type on a full-width page)
+**username** ('your-username')
+**market** ('codecanyon' or 'themeforest' or 'graphicriver')
+**price** (true) - show or hide price
+**ref** ('your-referral-username')
+**currency** ('$')
+**count** (0) - set to 0 to display all
 
 `[envato type="compact" username="butterflymedia" market="codecanyon" price="false" ref="butterflymedia" currency="$" count=0]`
 
@@ -33,6 +33,11 @@ Style `.envato-container` class to override the current loose style.
 Note: Your server must support the php `file_get_contents()` function.
 
 == Changelog ==
+
+= 1.2 =
+* UI: Moved CSS style to separate file
+* UI: Added a 5px padding to thumbnails
+* FRAMEWORK: Added path variables
 
 = 1.1 =
 * First public release
