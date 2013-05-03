@@ -1,14 +1,14 @@
-=== Envato Items ===
+=== Marketplace Items ===
 Contributors: butterflymedia, getbutterfly
 Tags: envato, envato api, themeforest, codecanyon, graphicriver, recent, items
 License: GPLv3
 Requires at least: 3.3
 Tested up to: 3.6-beta2
-Stable tag: 1.2
+Stable tag: 1.3
 
 == Description ==
 
-Display your Envato portfolio inside a post or a page.
+Display your Envato marketplace portfolio inside a post or a page.
 
 Shortcode parameters:
 
@@ -33,6 +33,10 @@ Style `.envato-container` class to override the current loose style.
 Note: Your server must support the php `file_get_contents()` function.
 
 == Changelog ==
+
+= 1.3 =
+* GENERAL: Renamed the plugin in order to comply with Envato's terms of service
+* GENERAL: Fixed the readme.txt file
 
 = 1.2 =
 * UI: Moved CSS style to separate file

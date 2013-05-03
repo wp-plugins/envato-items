@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name: Envato Items
-Version: 1.2
-Plugin URI: http://getbutterfly.com/wordpress-plugins/wor
-Description: Display your Envato portfolio inside a post or a page.
+Plugin Name: Marketplace Items
+Version: 1.3
+Plugin URI: http://getbutterfly.com/wordpress-plugins/marketplace-items/
+Description: Display your Envato marketplace portfolio inside a post or a page.
 Author: Ciprian Popescu
 Author URI: http://getbutterfly.com/
 
@@ -30,7 +30,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 define('EI_PLUGIN_URL', WP_PLUGIN_URL . '/' . dirname(plugin_basename(__FILE__)));
 define('EI_PLUGIN_PATH', WP_PLUGIN_DIR . '/' . dirname(plugin_basename(__FILE__)));
-define('EI_VERSION', '1.2');
+define('EI_VERSION', '1.3');
 
 function ei_styles() {
 	wp_enqueue_style('ei-style', EI_PLUGIN_URL . '/css/style.css');	
